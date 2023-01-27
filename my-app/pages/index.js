@@ -5,6 +5,7 @@ import Script from 'next/script'
 import {Heading, Grid,Text, Image, Tooltip, Flex, Input, FormControl, FormLabel, Box,Highlight, Button, GridItem} from '@chakra-ui/react'
 import Sidebar from '../components/Sidebar'
 import Dashboard from './dashboard'
+import Pricing from './pricing'
 
 export default function Home() {
   return (
@@ -16,8 +17,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex direction="row" justify="center" align="center">
-      
-        <Dashboard/>
+        <Pricing/>
+       
       </Flex>
     </>
   )

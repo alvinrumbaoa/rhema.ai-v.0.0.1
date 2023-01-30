@@ -17,8 +17,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex direction="row" justify="center" align="center">
-        <Pricing/>
-       
+        <Button variant="outline"><Link href="/signup">Sign up</Link></Button>
+        <Button variant="solid"><Link href="/login">Login</Link></Button>
       </Flex>
     </>
   )

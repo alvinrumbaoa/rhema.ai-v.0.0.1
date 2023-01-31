@@ -1,18 +1,18 @@
 import {mongoose} from 'mongoose';
 
-const connection ={}
 
 async function dbConnect(){
-	if (connection.isConnected){
-		return;
-	}
-
-
-	const db = await mongoose.connect(process.env.MONGO_URL,{
+	
+	mongoose.connect(process.env.MONGO_URL,{
 		useNewUrlParser:true,
 		useUnifiedTopology:true
-	});
-	connection.isConnected = db.connections[0].readyState
+	})
+	.then(() => console.log('Established a connection to the database'))
+    .catch(err => console.log('Something went wrong when connecting to the database', err));
+	mongoose.set("strictQuery", true);
+	
+
+
 }
 
 export default dbConnect;

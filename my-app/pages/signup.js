@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { FormControl, FormLabel, Input, Button, Box } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Button, Box, useToast } from "@chakra-ui/react";
 
 
 const SignUp = () => {
@@ -10,6 +10,7 @@ const SignUp = () => {
 		email: '',
 		password:'',
 	})
+	const toast = useToast();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -26,18 +27,34 @@ console.log(form)
     event.preventDefault();
     setLoading(true);
 
-		axios.post('http://localhost:3000/api/signup/' ,{
+		await axios.post('/api/signup/' ,{
 			...form
 		})
 		 
 		 .then((res) => {
 			if(res.data.errors) {
 				console.log(res.data.errors)
+				toast({
+					title: "Invalid email or password.",
+					status: "error",
+					duration: 9000,
+					isClosable: true,
+			  });
 			}
+
+			
 			else {
 				console.log(res.data)
 				router.push('/dashboard')
+				toast({
+					title: "Logged in successfully.",
+					status: "success",
+					duration: 9000,
+					isClosable: true,
+				  });
 			}
+
+
 		})
 		.catch((err) => {
 			console.log(err);

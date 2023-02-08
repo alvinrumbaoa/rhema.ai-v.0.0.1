@@ -5,6 +5,11 @@ import {Flex, Button, Input, FormControl, Select, Text, Heading,
 	FormErrorMessage,
 	FormHelperText,
 	FormLabel} from '@chakra-ui/react'
+import Typewriter from 'typewriter-effect';
+import { AnimatePresence, motion } from "framer-motion";
+
+
+
 const Form = () => {
   const [book, setBook] = useState('');
   const [chapter, setChapter] = useState('');
@@ -170,13 +175,17 @@ const Form = () => {
     <Button colorScheme="blue" type="submit" >
       Submit
     </Button>
-
-      {
-	  output && 
-    <Flex>
-     <Heading> Summarize:</Heading><Text> {output}</Text> 
-    </Flex>
-	  }
+    <AnimatePresence mode="wait">
+        {
+       <Typewriter
+       options={{
+         strings: output,
+         autoStart: true,
+         loop: true,
+       }}
+     />
+	      }
+    </AnimatePresence>
 	</FormControl>
     </form>
 	</Flex>

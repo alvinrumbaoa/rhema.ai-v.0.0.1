@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { AnimatePresence, motion } from "framer-motion";
 import Link from 'next/link'
 import React,{useEffect,useState,useRef} from 'react'
 import Script from 'next/script'
@@ -6,6 +7,8 @@ import {Heading, Grid,Text, Image, Tooltip, Flex, Input, FormControl, FormLabel,
 import Sidebar from '../components/Sidebar'
 import Dashboard from './dashboard'
 import Pricing from './pricing'
+import Form from '../components/Form'
+import Mood from '../components/Mood'
 
 export default function Home() {
   return (
@@ -19,6 +22,9 @@ export default function Home() {
       <Flex direction="row" justify="center" align="center">
         <Button variant="outline"><Link href="/signup">Sign up</Link></Button>
         <Button variant="solid"><Link href="/login">Login</Link></Button>
+
+        <Mood/>
+        <Form/>
       </Flex>
     </>
   )
